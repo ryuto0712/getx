@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class StatefulTodoPage extends StatefulWidget {
-  StatefulTodoPage({Key? key}) : super(key: key);
-
   @override
   _StatefulTodoState createState() => _StatefulTodoState();
 }
@@ -14,8 +12,10 @@ class _StatefulTodoState extends State<StatefulTodoPage> {
 
   @override
   void initState() {
-    Future(() async {
-      todoList = await fetchTodo();
+    setState(() {
+      Future(() async {
+        todoList = await fetchTodo();
+      });
     });
     super.initState();
   }

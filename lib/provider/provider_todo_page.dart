@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:provider_sample/provider_todo_model.dart';
+import 'package:provider_sample/provider/provider_todo_model.dart';
 
 class ProviderTodoPage extends StatelessWidget {
-  const ProviderTodoPage({
-    Key? key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -51,6 +47,7 @@ class ProviderTodoPage extends StatelessWidget {
                 ),
                 TextFormField(
                   onChanged: (value) {
+                    //consumerが監視している
                     model.taskName = value;
                   },
                 ),

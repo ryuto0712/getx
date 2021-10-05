@@ -1,18 +1,21 @@
-import 'package:flutter/cupertino.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 // pedantic_monoに従って直していくとだいぶきれいになります
-class ProviderTodoModel extends ChangeNotifier {
-  List<Map<String, dynamic>> todoList = [];
+class GetxTodoController extends GetxController {
+  //動的型付
+  //asの後ろの型を
+  var todoList = [].obs;
 
-  String? taskName;
+  var taskName = "".obs;
 
   Future<void> init() async {
-    todoList = await fetchTodo();
-    notifyListeners();
+    todoList = (await fetchTodo()) as RxList;
   }
 
   Future<List<Map<String, dynamic>>> fetchTodo() async {
-    await Future<void>.delayed(const Duration(seconds: 1));
+    //5秒でreturnしますってメソッド
+    await Future<void>.delayed(const Duration(seconds: 5));
     return [
       <String, dynamic>{'taskName': '掃除', 'complete': false},
       <String, dynamic>{'taskName': '洗濯', 'complete': false},
@@ -22,17 +25,16 @@ class ProviderTodoModel extends ChangeNotifier {
 
   void toggleComplete(int index) {
     final dynamic complete = todoList[index]['complete'];
+    //true or falseであれば
     if (complete is bool) {
       todoList[index]['complete'] = !complete;
     } else {
       return;
     }
-    notifyListeners();
   }
 
   void addTodo() {
     todoList.add(<String, dynamic>{'taskName': taskName, 'complete': false});
-    notifyListeners();
   }
 
   int completeCounter() {

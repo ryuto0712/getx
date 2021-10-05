@@ -25,6 +25,11 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^6.0.1
+  flutter_hooks: ^0.18.0
+  hooks_riverpod: ^0.14.0+5
+  state_notifier: ^0.7.1
+  get: ^4.3.8
+
 
 dev_dependencies:
   flutter_test:
