@@ -3,6 +3,12 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 // pedantic_monoに従って直していくとだいぶきれいになります
 class GetxTodoController extends GetxController {
+  // このようにコンストラクタに初期化処理を書いておくと
+  // ..init()のように初期化を呼び出すのを忘れても大丈夫なので便利です
+  GetxTodoController() {
+    init();
+  }
+
   //動的型付
   //asの後ろの型を
   var todoList = [].obs;
@@ -10,7 +16,8 @@ class GetxTodoController extends GetxController {
   var taskName = "".obs;
 
   Future<void> init() async {
-    todoList = (await fetchTodo()) as RxList;
+    // .valueが本来扱いたい型になるのでそちらに代入するようにしてください
+    todoList.value = await fetchTodo();
   }
 
   Future<List<Map<String, dynamic>>> fetchTodo() async {
