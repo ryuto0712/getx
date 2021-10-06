@@ -55,6 +55,7 @@ class GetxTodoPage extends StatelessWidget {
           TextFormField(
             onChanged: (value) {
               //consumerが監視している
+              // こちらも.valueで代入しないとエラーになります
               c.taskName.value = value;
             },
           ),
