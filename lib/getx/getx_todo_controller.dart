@@ -24,9 +24,9 @@ class GetxTodoController extends GetxController {
     //5秒でreturnしますってメソッド
     await Future<void>.delayed(const Duration(seconds: 5));
     return [
-      <String, dynamic>{'taskName': '掃除', 'complete': false},
-      <String, dynamic>{'taskName': '洗濯', 'complete': false},
-      <String, dynamic>{'taskName': 'サウナ', 'complete': false},
+      <String, dynamic>{'taskName': '掃除', 'complete': false}.obs,
+      <String, dynamic>{'taskName': '洗濯', 'complete': false}.obs,
+      <String, dynamic>{'taskName': 'サウナ', 'complete': false}.obs,
     ];
   }
 
@@ -41,7 +41,8 @@ class GetxTodoController extends GetxController {
   }
 
   void addTodo() {
-    todoList.add(<String, dynamic>{'taskName': taskName, 'complete': false});
+    todoList.add(
+        <String, dynamic>{'taskName': taskName.value, 'complete': false}.obs);
   }
 
   int completeCounter() {

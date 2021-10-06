@@ -55,7 +55,7 @@ class GetxTodoPage extends StatelessWidget {
           TextFormField(
             onChanged: (value) {
               //consumerが監視している
-              c.taskName = value as RxString;
+              c.taskName.value = value;
             },
           ),
           ElevatedButton(
