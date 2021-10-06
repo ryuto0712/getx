@@ -7,7 +7,9 @@ import 'package:provider_sample/getx/getx_todo_controller.dart';
 class GetxTodoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final GetxTodoController c = Get.put(GetxTodoController());
+    // ..init()で初期化処理を呼び出すようにしてください
+    // またはController側に書いたようにコンストラクタに書いたように初期化処理が自動的に走るようにするとよいかと思います
+    final GetxTodoController c = Get.put(GetxTodoController()..init());
     return Scaffold(
       appBar: AppBar(title: const Text('TODO')),
       body: Column(
