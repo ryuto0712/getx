@@ -4,7 +4,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 // pedantic_monoに従って直していくとだいぶきれいになります
 class GetxTodoController extends GetxController {
   // このようにコンストラクタに初期化処理を書いておくと
-  // ..init()のように初期化を呼び出すのを忘れても大丈夫なので便利です
+  // ..init()のように初期化を呼び出すのを忘れても大丈夫なので便利
   GetxTodoController() {
     init();
   }
@@ -16,7 +16,7 @@ class GetxTodoController extends GetxController {
   var taskName = "".obs;
 
   Future<void> init() async {
-    // .valueが本来扱いたい型になるのでそちらに代入するようにしてください
+    // .valueが本来扱いたい型になるのでそちらに代入するように
     todoList.value = await fetchTodo();
   }
 
@@ -31,10 +31,10 @@ class GetxTodoController extends GetxController {
   }
 
   void toggleComplete(int index) {
-    final dynamic complete = todoList[index]['complete'];
+    final dynamic complete = todoList.value[index]['complete'];
     //true or falseであれば
     if (complete is bool) {
-      todoList[index]['complete'] = !complete;
+      todoList.value[index]['complete'] = !complete;
     } else {
       return;
     }

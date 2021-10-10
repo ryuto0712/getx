@@ -16,6 +16,7 @@ class RiverpodTodoModel extends ChangeNotifier {
   Future<void> init() async {
     todoList = await fetchTodo();
     notifyListeners();
+    print('初期化処理が呼ばれたよ');
   }
 
   Future<List<Map<String, dynamic>>> fetchTodo() async {
@@ -42,6 +43,7 @@ class RiverpodTodoModel extends ChangeNotifier {
   void addTodo() {
     todoList.add(<String, dynamic>{'taskName': taskName, 'complete': false});
     notifyListeners();
+    print('出たよ');
   }
 
   int completeCounter() {

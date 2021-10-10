@@ -7,7 +7,7 @@ import 'package:provider_sample/getx/getx_todo_controller.dart';
 class GetxTodoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // ..init()で初期化処理を呼び出すようにしてください
+    // ..init()で初期化処理を呼び出すように
     // またはController側に書いたようにコンストラクタに書いたように初期化処理が自動的に走るようにするとよいかと思います
     final GetxTodoController c = Get.put(GetxTodoController()..init());
     return Scaffold(
@@ -17,6 +17,7 @@ class GetxTodoPage extends StatelessWidget {
         children: <Widget>[
           Obx(() => Text('達成数: ${c.completeCounter()}')),
           Expanded(
+            //Obxはconsumerのようなもの
             child: Obx(
               () => ListView.builder(
                 itemCount: c.todoList.length,
@@ -53,9 +54,9 @@ class GetxTodoPage extends StatelessWidget {
             ),
           ),
           TextFormField(
-            onChanged: (value) {
+            onChanged: (val) {
               //consumerが監視している
-              c.taskName = value as RxString;
+              c.taskName.value = val;
             },
           ),
           ElevatedButton(

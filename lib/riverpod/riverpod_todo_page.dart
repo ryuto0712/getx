@@ -6,7 +6,7 @@ import 'package:provider_sample/riverpod/riverpod_todo_model.dart';
 class RiverpodTodoPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final model = useProvider(RiverpodTodoModelProvider)..init();
+    final model = useProvider(RiverpodTodoModelProvider);
     return Scaffold(
       appBar: AppBar(title: const Text('TODO')),
       body: Column(
